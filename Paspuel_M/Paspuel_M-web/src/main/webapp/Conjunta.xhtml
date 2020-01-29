@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="title">Forms</ui:define>
+    <ui:define name="breadcrumb">
+        <li>Components</li>
+        <li><i class="material-icons">chevron_right</i></li>
+        <li><p:link outcome="/forms">Forms</p:link></li>
+    </ui:define>
+    <ui:define name="content">
+        <h1>GESTIÓN DE MODULOS</h1>
+        <h:form id="fm">
+            <p:dataTable id="tblModulos" value="#{bean.modulos}" var="tblModulos" selectionMode="single" 
+                         rowKey="#{tblModulos.codigo}" selection="#{bean.moduloSeleccionado}">
+                <p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}" update="@form" />
+                <p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update="@form   " />
+                <f:facet name="header">
+                    MODULOS
+                </f:facet>
+                <p:column headerText="CODIGO">
+                    #{tblModulos.codigo}
+                </p:column>
+                <p:column headerText="NOMBRE">
+                    #{tblModulos.nombre}
+                </p:column>
+                <p:column headerText="ESTADO">
+                    #{tblModulos.estado.text}
+                </p:column>
+            </p:dataTable>
+            <p:separator style="height: 10px"/>
+            <p:panel id="buttonP">
+                <p:commandButton id="funcB" action="#{bean.funcionalidad()}" disabled="#{bean.moduloSeleccionado!=null}" value="Funcionalidades" update="templateFuncionalidad buttonP" immediate="true"/>
+            </p:panel>
+            <p:panel header="Funcionalidades del Módulo" id="templateFuncionalidad">
+                <p:dataTable id="tblFunc" value="#{bean.funcionalidades}" var="tblFunc" selectionMode="single" 
+                             rowKey="#{tblFunc.codigo}" selection="#{bean.funcSeleccionado}">
+                     <p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}" update="@form" />
+                     <p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update="@form   " />
+                     <f:facet name="header">
+                         Funcionalidades del Módulo 
+                     </f:facet>
+                     <p:column headerText="CODIGO">
+                         #{tblFunc.codigo}
+                     </p:column>
+                     <p:column headerText="NOMBRE">
+                         #{tblFunc.nombre}
+                     </p:column>
+                     <p:column headerText="URL_PRINCIPAL">
+                         #{tblFunc.urlPrincipal}
+                     </p:column>
+                 </p:dataTable>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

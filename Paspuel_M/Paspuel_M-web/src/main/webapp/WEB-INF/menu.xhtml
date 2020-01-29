@@ -1,0 +1,77 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:sm="http://primefaces.org/sapphire">
+
+    <div id="layout-menu-container" class="layout-menu-container">
+        <div id="layout-nano" class="nano">
+            <div class="nano-content sidebar-scroll-content">
+                <div class="layout-menu-wrapper" >
+                    <h:form id="menuform" >
+                        <sm:menu>
+                            <p:menuitem id="sr_dashboard"  value="Dashboard" icon="&#xE871;" outcome="/forms"/>
+                            
+                            <p:submenu id="sr_mega" label="Mega" icon="&#xE896;">
+                                <f:attribute name="mega" value="true" />
+                                <f:attribute name="badge" value="2" />
+                                <p:submenu id="sr_components2" label="Components" icon="&#xE896;">
+                                    <p:menuitem id="sr_sample2" value="Sample Page" icon="&#xE30B;" outcome="/forms" />
+                                    
+                                </p:submenu>
+                                <p:submenu id="sr_others" label="Templates" icon="&#xE896;">
+                                    <p:menuitem id="sr_ultima" value="Ultima" icon="&#xE30B;" url="https://www.primefaces.org/layouts/ultima" target="_blank" />
+                                    <p:menuitem id="sr_serenity" value="Serenity" icon="&#xE30B;" url="https://www.primefaces.org/layouts/serenity" target="_blank"  />
+                                    <p:menuitem id="sr_avalon" value="Avalon" icon="&#xE30B;" url="https://www.primefaces.org/layouts/avalon" target="_blank"  />
+                                    <p:menuitem id="sr_apollo" value="Apollo" icon="&#xE30B;" url="https://www.primefaces.org/layouts/apollo" target="_blank"  />
+                                    <p:menuitem id="sr_roma" value="Roma" icon="&#xE30B;" url="https://www.primefaces.org/layouts/roma" target="_blank"  />
+                                    <p:menuitem id="sr_babylon" value="Babylon" icon="&#xE30B;" url="https://www.primefaces.org/layouts/babylon" target="_blank"  />
+                                    <p:menuitem id="sr_manhattan" value="Manhattan" icon="&#xE30B;" url="https://www.primefaces.org/layouts/manhattan" target="_blank"  />
+                                    <p:menuitem id="sr_verona" value="Verona" icon="&#xE30B;" url="https://www.primefaces.org/layouts/verona" target="_blank"  />
+                                    <p:menuitem id="sr_olympia" value="Olympia" icon="&#xE30B;" url="https://www.primefaces.org/layouts/olympia" target="_blank"  />
+                                    <p:menuitem id="sr_ecuador" value="Ecuador" icon="&#xE30B;" url="https://www.primefaces.org/layouts/ecuador" target="_blank"  />
+                                </p:submenu>
+                                <p:submenu id="sr_demos" label="Demos" icon="&#xE896;">
+                                    <p:menuitem id="sr_faces" value="PrimeFaces" icon="&#xE30B;" url="https://www.primefaces.org/showcase" />
+                                    <p:menuitem id="sr_ng" value="PrimeNG" icon="&#xE30B;" url="https://www.primefaces.org/primeng" />
+                                    <p:menuitem id="sr_react" value="PrimeReact" icon="&#xE30B;" url="https://www.primefaces.org/primereact" />
+                                </p:submenu>
+                            </p:submenu>
+                            <p:submenu id="sr_default" label="Pages" icon="&#xE884;">
+                                <p:menuitem id="sr_db_landing" value="Landing" icon="&#xE904;" outcome="/landing"/>
+                                
+                                <p:menuitem id="sr_login" value="Login Page" icon="&#xE8E8;" outcome="/login" />
+                                
+                            </p:submenu>
+                            <p:submenu id="sr_hierarchy" label="Hierarchy" icon="&#xE5D2;">
+                                <p:submenu id="sr_sm1" label="Submenu 1" icon="&#xE8D2;">
+                                    <p:submenu id="sr_sm11" label="Submenu 1.1" icon="&#xE8D2;">
+                                        <p:menuitem id="sr_lnk111" value="Link 1.1.1" icon="&#xE8D2;" url="#" />
+                                        <p:menuitem id="sr_lnk112" value="Link 1.1.2" icon="&#xE8D2;" url="#" />
+                                        <p:menuitem id="sr_lnk113" value="Link 1.1.3" icon="&#xE8D2;" url="#" />
+                                    </p:submenu>
+                                    <p:submenu id="sr_sm12" label="Submenu 1.2" icon="&#xE8D2;">
+                                        <p:menuitem id="sr_lnk121" value="Link 1.2.1" icon="&#xE8D2;" url="#" />
+                                    </p:submenu>
+                                </p:submenu>
+                                <p:submenu id="sr_sm2" label="Submenu 2" icon="&#xE8D2;">
+                                    <p:submenu id="sr_sm21" label="Submenu 2.1" icon="&#xE8D2;">
+                                        <p:menuitem id="sr_lnk211" value="Link 2.1.1" icon="&#xE8D2;" url="#" />
+                                        <p:menuitem id="sr_lnk212" value="Link 2.1.2" icon="&#xE8D2;" url="#" />
+                                    </p:submenu>
+                                    <p:submenu id="sr_sm22" label="Submenu 2.2" icon="&#xE8D2;">
+                                        <p:menuitem id="sr_lnk221" value="Link 2.2.1" icon="&#xE8D2;" url="#" />
+                                    </p:submenu>
+                                </p:submenu>
+                            </p:submenu>
+                            
+                        </sm:menu>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ui:composition>

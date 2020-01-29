@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="title">Forms</ui:define>
+    <ui:define name="breadcrumb">
+        <li>Components</li>
+        <li><i class="material-icons">chevron_right</i></li>
+        <li><p:link outcome="/forms">Forms</p:link></li>
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="fm">
+            <p:dataTable id="tblPadres" value="#{padreBean.padres}" var="tblPadre" selectionMode="single" 
+                         rowKey="#{tblPadre.codigo}" selection="#{padreBean.padreModificar}">
+                <p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}" update="@form" />
+                <p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update="@form   " />
+                <f:facet name="header">
+                    LISTADO PADRES
+                </f:facet>
+                <p:column headerText="CODIGO">
+                    #{tblPadre.codigo}
+                </p:column>
+                <p:column headerText="NOMBRE">
+                    #{tblPadre.nombre}
+                </p:column>
+                <p:column headerText="ESTADO CIVIL">
+                    #{tblPadre.estadoCivil.text}
+                </p:column>
+            </p:dataTable>
+            <p:separator style="height: 10px"/>
+            <p:panel id="buttonP">
+                <p:commandButton id="nuevoB" action="#{padreBean.nuevo()}" disabled="#{padreBean.enNuevo}" value="NUEVO" update="templateActualizar buttonP" immediate="true"/>
+                <p:commandButton id="editarB" action="#{padreBean.modificar()}" disabled="#{padreBean.enModificar}" value="EDITAR" update="templateActualizar buttonP @form"    immediate="true"/>
+                <p:commandButton id="eliminarB" action="#{padreBean.eliminar()}" disabled="#{padreBean.enEliminar}" value="ELIMINAR" update="templateActualizar buttonP @form"    immediate="true">
+                    <p:confirm header="CONFIRMAR" message="¿ESTA SEGURO?" icon="pi pi-exclamation-triangle" />
+                </p:commandButton>
+            </p:panel>
+            <p:panel header="PADRE" id="templateActualizar">
+                <p:panel header="PADRE" id="pnlTemplate" rendered="#{padreBean.esSelecconado}">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="Nombre" value="Nombre" />
+                        <p:inputText id="Nombre" value="#{padreBean.padre.nombre}" required="true"/>
+                        <p:outputLabel for="clasificacion" value="Estado Civil" />
+                        <p:selectOneMenu id="clasificacion" required="true" value="#{padreBean.padre.estadoCivil}">
+                            <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{padreBean.estadoCivil }" var="estadoCivil" itemValue="#{estadoCivil}" itemLabel="#{estadoCivil.text}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton id="guardarB" value="Guardar" action="#{padreBean.guardar()}" update="@form"/>
+                    <p:commandButton id="cancelarB" value="Cancelar" action="#{padreBean.cancelar()}" immediate="true" update="@form"/>
+                </p:panel>
+            </p:panel>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+            </p:confirmDialog>
+        </h:form>
+    </ui:define>
+</ui:composition>
